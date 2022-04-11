@@ -140,10 +140,10 @@ journey
 
 ### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Wekkin/wekkin.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+1. Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Wekkin/wekkin.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 您的 Pages 文稿网站将使用您在主页中选择的 Jekyll 模版中的布局和样式,此主题的名称保存在 Jekyll '_config.yml' 配置文件中。
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+1. Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
 使用主页时遇到问题？查看这里获取帮助.
