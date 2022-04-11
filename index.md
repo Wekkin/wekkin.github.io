@@ -1,15 +1,16 @@
 ## 欢迎来到Opaper
 
-点击这里可以修改MD内容[editor on GitHub](https://github.com/Wekkin/wekkin.github.io/edit/main/index.md).
+1. 点击这里可以修改MD内容[editor on GitHub](https://github.com/Wekkin/wekkin.github.io/edit/main/index.md).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.当你提交到这个库时，GitHub Pages将运行[Jekyll](https://jekyllrb.com/)来从你的Markdown文件中的内容重建你的站点中的页面。
+2. Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+当你提交到这个库时，GitHub Pages将运行[Jekyll](https://jekyllrb.com/)来从你的Markdown文件中的内容重建你的站点中的页面。
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-Markdown是一种轻量级且易于使用的语法，用于设置写作样式.
+1. Markdown is a lightweight and easy-to-use syntax for styling your writing. 
+1. Markdown是一种轻量级且易于使用的语法，用于设置写作样式.
 
-```markdown
+#### markdown用法
  # 一级标题                       `# 一级标题`
 2. **粗体**         粗体         `**粗体**`
 2. *斜体*            斜体         `*斜体*`
