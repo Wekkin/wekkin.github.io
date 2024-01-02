@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="主要涉及到三个函数：  os.path.exists(path)： 判断一个目录是否存 os.makedirs(path) ：多层创建目录 os.mkdir(path) ：创建目录  123456789101112131415161718192021import ospath&#x3D;path.strip() #去除首位空格path&#x3D;path.rstrip(&quot;\\&quot;) # 去除尾部 \">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Test">
+<meta property="og:url" content="http://example.com/2023/11/03/Python-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/index.html">
+<meta property="og:site_name" content="Test">
+<meta property="og:description" content="主要涉及到三个函数：  os.path.exists(path)： 判断一个目录是否存 os.makedirs(path) ：多层创建目录 os.mkdir(path) ：创建目录  123456789101112131415161718192021import ospath&#x3D;path.strip() #去除首位空格path&#x3D;path.rstrip(&quot;\\&quot;) # 去除尾部 \">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-11-03T06:49:19.000Z">
+<meta property="article:modified_time" content="2024-01-02T04:42:05.000Z">
+<meta property="article:author" content="Wrkkin">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Test" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Test</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Python-创建文件夹" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/03/Python-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/" class="article-date">
+  <time class="dt-published" datetime="2023-11-03T06:49:19.000Z" itemprop="datePublished">2023-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>主要涉及到三个函数：</p>
+<ol>
+<li>os.path.exists(path)： 判断一个目录是否存</li>
+<li>os.makedirs(path) ：多层创建目录</li>
+<li>os.mkdir(path) ：创建目录</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">path=path.strip() <span class="comment">#去除首位空格</span></span><br><span class="line">path=path.rstrip(<span class="string">&quot;\\&quot;</span>) <span class="comment"># 去除尾部 \ 符号</span></span><br><span class="line">isExists=os.path.exists(path) <span class="comment">#判断路径是否存在，存在则返回true</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> isExists:</span><br><span class="line">  <span class="comment">#如果不存在则创建目录</span></span><br><span class="line">  <span class="comment">#创建目录操作函数</span></span><br><span class="line">  os.makedirs(path) </span><br><span class="line"> </span><br><span class="line">        <span class="built_in">print</span> path+<span class="string">&#x27; 创建成功&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 如果目录存在则不创建，并提示目录已存在</span></span><br><span class="line">        <span class="built_in">print</span> path+<span class="string">&#x27; 目录已存在&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 定义要创建的目录</span></span><br><span class="line">mkpath=<span class="string">&quot;d:\\qttc\\web\\&quot;</span></span><br><span class="line"><span class="comment"># 调用函数</span></span><br><span class="line">mkdir(mkpath)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/03/Python-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/" data-id="clqvv8thj000yw9k57nyj5pug" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/11/03/Markdown%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/OPT/" rel="tag">OPT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B1%87%E6%8A%A5/" rel="tag">汇报</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/OPT/" style="font-size: 10px;">OPT</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 20px;">工作</a> <a href="/tags/%E6%B1%87%E6%8A%A5/" style="font-size: 20px;">汇报</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/02/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/28/2023-12-28%20%E5%B7%A5%E4%BD%9C%E6%B1%87%E6%8A%A5/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/23/2023-12-22%20%E7%A6%BB%E8%81%8C%E7%94%B3%E8%AF%B7/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/23/2023-06-03%20%E5%B7%A5%E4%BD%9C%E6%B1%87%E6%8A%A5/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/23/2023-10-27%20%E5%8D%9A%E9%9F%ACVR%E7%9C%BC%E9%95%9C%E6%A3%80%E6%B5%8B%E9%A1%B9%E7%9B%AE/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Wrkkin<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
