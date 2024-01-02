@@ -1,37 +1,333 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>阿伟的网站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一级标题     # 一级标题 粗体         粗体         **粗体** 斜体            斜体         *斜体* ++下划线++       下划线       ++下划线++ 删除线       删除线      ~~删除线~~ &#x3D;&#x3D;文本高亮&#x3D;&#x3D;     文本高亮        &#x3D;&#x3D;文本高亮&#x3D;&#x3D; 水平线  ---">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿伟的网站">
+<meta property="og:url" content="http://example.com/2023/11/03/Markdown%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="阿伟的网站">
+<meta property="og:description" content="一级标题     # 一级标题 粗体         粗体         **粗体** 斜体            斜体         *斜体* ++下划线++       下划线       ++下划线++ 删除线       删除线      ~~删除线~~ &#x3D;&#x3D;文本高亮&#x3D;&#x3D;     文本高亮        &#x3D;&#x3D;文本高亮&#x3D;&#x3D; 水平线  ---">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s4.ax1x.com/2022/01/26/7LAGBF.png">
+<meta property="article:published_time" content="2023-11-03T06:49:28.000Z">
+<meta property="article:modified_time" content="2024-01-02T04:42:06.000Z">
+<meta property="article:author" content="Wrkkin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s4.ax1x.com/2022/01/26/7LAGBF.png">
+  
+    <link rel="alternate" href="/atom.xml" title="阿伟的网站" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">阿伟的网站</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Markdown使用方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/03/Markdown%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2023-11-03T06:49:28.000Z" itemprop="datePublished">2023-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一级标题-一级标题"><a href="#一级标题-一级标题" class="headerlink" title="一级标题     # 一级标题"></a>一级标题     <code># 一级标题</code></h1><ol>
+<li><strong>粗体</strong>         粗体         <code>**粗体**</code></li>
+<li><em>斜体</em>            斜体         <code>*斜体*</code></li>
+<li>++下划线++       下划线       <code>++下划线++</code></li>
+<li><del>删除线</del>       删除线      <code>~~删除线~~</code></li>
+<li>&#x3D;&#x3D;文本高亮&#x3D;&#x3D;     文本高亮        <code>==文本高亮==</code></li>
+<li>水平线  <code>---</code></li>
+</ol>
+<hr>
+<blockquote>
+<p>8.0 引用      <code>&gt; 8.1 引用</code></p>
+</blockquote>
+<ul>
+<li>09无序列表1   <code>- 09无序列表1</code></li>
+<li>09无序列表2  <code> - 09无序列表2</code></li>
+<li>09无序列表3   <code> - 09无序列表3</code></li>
+</ul>
+<ol>
+<li>有序列表1   <code>10. 有序列表</code></li>
+</ol>
+<ul>
+<li><input disabled="" type="checkbox"> 11. 未完成任务    <code>- [ ] 11. 未完成任务</code></li>
+<li><input checked="" disabled="" type="checkbox"> 12.已完成任务    <code>- [x] 12.已完成任务</code></li>
+</ul>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://note.youdao.com/">插入有道链接</a>   <code>[插入有道链接](https://note.youdao.com/)  </code></li>
+<li>插入图片<a target="_blank" rel="noopener" href="https://imgtu.com/i/7LAGBF"><img src="https://s4.ax1x.com/2022/01/26/7LAGBF.png" alt="7LAGBF.png"></a><br><code>插入图片[![7LAGBF.png](https://s4.ax1x.com/2022/01/26/7LAGBF.png)](https://imgtu.com/i/7LAGBF)</code></li>
+<li><code>print(“hello world,内嵌代码”)</code>     ‘<code>print(“hello world,内嵌代码”)</code>‘</li>
+<li>  插入代码块1<br>  插入代码块2<br>  插入代码块3</li>
+</ol>
+<p>1.</p>
+<table>
+<thead>
+<tr>
+<th>表格1</th>
+<th>表格2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>表格3</td>
+<td>表格4</td>
+</tr>
+<tr>
+<td>表格5</td>
+<td>表格6</td>
+</tr>
+</tbody></table>
+<p><code>| 表格1 | 表格2 | | --- | --- | | 表格3 | 表格4 | | 表格5 | 表格6 |</code></p>
+<ol>
+<li>数学公式</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E = mc^2</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>流程图</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flowchart LR</span><br><span class="line">    Start --&gt; Stop --&gt; 结束</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>时序图</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sequenceDiagram</span><br><span class="line">    participant A as Alice</span><br><span class="line">    participant J as John</span><br><span class="line">    A-&gt;&gt;J: Hello John, how are you?</span><br><span class="line">    J-&gt;&gt;A: Great!</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>甘特图</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gantt</span><br><span class="line">    title 项目</span><br><span class="line">    dateFormat  YYYY-MM-DD</span><br><span class="line">    section Section区间</span><br><span class="line">    A task任务           :a1, 2022-01-01, 200d</span><br><span class="line">    Another task     :after a1  , 165d</span><br><span class="line">    section Another</span><br><span class="line">    Task in sec      :2022-02-01  , 100d</span><br><span class="line">    another task      : 60d</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>类图</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">Class01 &lt;|-- AveryLongClass : Cool</span><br><span class="line">Class03 *-- Class04</span><br><span class="line">Class05 o-- Class06</span><br><span class="line">Class07 .. Class08</span><br><span class="line">Class01 : size()</span><br><span class="line">Class01 : int chimp</span><br><span class="line">Class01 : int gorilla</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>状态图</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stateDiagram-v2</span><br><span class="line">    state if_state &lt;&gt;</span><br><span class="line">    [*] --&gt; IsPositive</span><br><span class="line">    IsPositive --&gt; if_state</span><br><span class="line">    if_state --&gt; False: if n &lt; 0</span><br><span class="line">    if_state --&gt; True : if n &gt;= 0</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>E-R图</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">erDiagram</span><br><span class="line">    CUSTOMER ||--o&#123; ORDER : places</span><br><span class="line">    ORDER ||--|&#123; LINE-ITEM : contains</span><br><span class="line">    CUSTOMER &#125;|..|&#123; DELIVERY-ADDRESS : uses</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>饼状图</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pie</span><br><span class="line">    title 标题</span><br><span class="line">    &quot;Calcium&quot; : 42.96</span><br><span class="line">    &quot;Potassium&quot; : 50.05</span><br><span class="line">    &quot;Magnesium&quot; : 10.01</span><br><span class="line">    &quot;Iron&quot; :  5</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>用户旅程图</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">journey</span><br><span class="line">    title My working day</span><br><span class="line">    section Go to work</span><br><span class="line">      Make tea: 5: Me</span><br><span class="line">      Go upstairs: 3: Me</span><br><span class="line">      Do work: 1: Me, Cat</span><br><span class="line">    section Go home</span><br><span class="line">      Go downstairs: 5: Me</span><br><span class="line">      Sit down: 5: Me</span><br></pre></td></tr></table></figure>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/03/Markdown%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="clqwc7wk700019zk55j58a65k" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/11/03/opencv-Python%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/11/03/Python-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
 
-{% block page_class %}page-post-detail{% endblock %}
+  
+</article>
 
 
-{% block content %}
-
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
-
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li></ul>
+    </div>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E7%BD%91%E7%AB%99/" style="font-size: 10px;">网站</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/02/%E5%8D%9A%E5%AE%A2%E6%A8%A1%E7%89%88/">使用Obsidian测试网站</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/02/hexo%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/">hexo安装记录</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/03/C#%E5%85%B3%E9%94%AE%E5%AD%97/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/03/opencv-Python%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/03/Markdown%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Wrkkin<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
