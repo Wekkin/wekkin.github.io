@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wekkin.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1. 介绍与概述 定义与意义： 解释图像增强的概念以及为什么它对图像处理和视觉识别至关重要。 应用领域： 介绍图像增强在不同领域的应用，例如医学影像、计算机视觉、安全监控等。  2. 常见的图像增强技术 亮度和对比度调整： 解释如何调整图像的亮度和对比度以改善图像质量。 直方图均衡化： 描述直方图均衡化如何增强图像的对比度和细节。 滤波和去噪： 介绍不同的滤波器和去噪技术，如均值滤波、中值滤波和小">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像增强">
+<meta property="og:url" content="https://wekkin.github.io/2023/12/16/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA/index.html">
+<meta property="og:site_name" content="阿伟的网站">
+<meta property="og:description" content="1. 介绍与概述 定义与意义： 解释图像增强的概念以及为什么它对图像处理和视觉识别至关重要。 应用领域： 介绍图像增强在不同领域的应用，例如医学影像、计算机视觉、安全监控等。  2. 常见的图像增强技术 亮度和对比度调整： 解释如何调整图像的亮度和对比度以改善图像质量。 直方图均衡化： 描述直方图均衡化如何增强图像的对比度和细节。 滤波和去噪： 介绍不同的滤波器和去噪技术，如均值滤波、中值滤波和小">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-12-16T07:57:31.000Z">
+<meta property="article:modified_time" content="2024-01-02T13:44:44.585Z">
+<meta property="article:author" content="Wrkkin">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="图像处理">
+<meta property="article:tag" content="工作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wekkin.github.io/2023/12/16/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>图像增强 | 阿伟的网站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">阿伟的网站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wekkin.github.io/2023/12/16/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wrkkin">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿伟的网站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图像增强
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-12-16 15:57:31" itemprop="dateCreated datePublished" datetime="2023-12-16T15:57:31+08:00">2023-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-01-02 21:44:44" itemprop="dateModified" datetime="2024-01-02T21:44:44+08:00">2024-01-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="1-介绍与概述"><a href="#1-介绍与概述" class="headerlink" title="1. 介绍与概述"></a>1. <strong>介绍与概述</strong></h3><ul>
+<li><strong>定义与意义：</strong> 解释图像增强的概念以及为什么它对图像处理和视觉识别至关重要。</li>
+<li><strong>应用领域：</strong> 介绍图像增强在不同领域的应用，例如医学影像、计算机视觉、安全监控等。</li>
+</ul>
+<h3 id="2-常见的图像增强技术"><a href="#2-常见的图像增强技术" class="headerlink" title="2. 常见的图像增强技术"></a>2. <strong>常见的图像增强技术</strong></h3><ul>
+<li><strong>亮度和对比度调整：</strong> 解释如何调整图像的亮度和对比度以改善图像质量。</li>
+<li><strong>直方图均衡化：</strong> 描述直方图均衡化如何增强图像的对比度和细节。</li>
+<li><strong>滤波和去噪：</strong> 介绍不同的滤波器和去噪技术，如均值滤波、中值滤波和小波去噪。</li>
+<li><strong>锐化和边缘增强：</strong> 解释如何使用锐化技术来增强图像的边缘和细节。</li>
+<li><strong>颜色校正和增强：</strong> 讨论对图像进行颜色校正和增强的方法。</li>
+</ul>
+<h3 id="3-高级图像增强技术"><a href="#3-高级图像增强技术" class="headerlink" title="3. 高级图像增强技术"></a>3. <strong>高级图像增强技术</strong></h3><ul>
+<li><strong>深度学习应用：</strong> 讨论使用深度学习和神经网络的图像增强方法，如超分辨率重建、图像去噪和图像修复。</li>
+<li><strong>风格迁移和图像合成：</strong> 介绍风格迁移和图像合成技术，可以改变图像的外观和风格。</li>
+</ul>
+<h3 id="4-案例和示例"><a href="#4-案例和示例" class="headerlink" title="4. 案例和示例"></a>4. <strong>案例和示例</strong></h3><ul>
+<li><strong>展示实际案例：</strong> 使用图像增强技术改善实际图像的示例，比如模糊图像的恢复、低分辨率图像的增强等。</li>
+</ul>
+<h3 id="5-结语和总结"><a href="#5-结语和总结" class="headerlink" title="5. 结语和总结"></a>5. <strong>结语和总结</strong></h3><ul>
+<li><strong>总结内容：</strong> 确保对图像增强技术的核心概念和关键点进行简明扼要的总结。</li>
+<li><strong>未来展望：</strong> 强调图像增强技术对未来的重要性，并鼓励对该领域的进一步研究和探索。</li>
+</ul>
+<h3 id="1-亮度调整："><a href="#1-亮度调整：" class="headerlink" title="1. 亮度调整："></a>1. 亮度调整：</h3><ul>
+<li><strong>增加&#x2F;减少整体亮度：</strong> 可以通过调整图像中每个像素的RGB值来增加或减少整体亮度。将每个像素的RGB值都增加一定量，图像看起来更明亮；反之，减少每个像素的RGB值则使图像更暗。</li>
+<li><strong>线性变换：</strong> 使用线性变换来调整亮度。这可以通过对图像的每个像素值进行乘法或加法操作来实现。例如，将图像的每个像素值乘以一个大于1的系数可增加亮度，而乘以小于1的系数则减少亮度。</li>
+</ul>
+<h3 id="2-对比度调整："><a href="#2-对比度调整：" class="headerlink" title="2. 对比度调整："></a>2. 对比度调整：</h3><ul>
+<li><strong>增强对比度：</strong> 对比度是图像中暗部和亮部之间差异的度量。通过拉伸图像的灰度级范围来增强对比度。常见的方法是使用直方图拉伸或对比度拉伸来重新映射像素的灰度级。</li>
+<li><strong>直方图均衡化：</strong> 这是一种常用的方法，通过重新分配像素的灰度级来增强对比度。它通过扩展图像的动态范围来增加图像中暗部和亮部的差异，从而增强对比度。</li>
+</ul>
+<h3 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h3><p>这些调整可以通过图像处理软件（如Photoshop、GIMP）或编程语言中的图像处理库（如OpenCV、PIL）来实现。在编程中，您可以使用以下示例代码来调整图像的亮度和对比度（以Python和OpenCV为例）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取图像</span></span><br><span class="line">image = cv2.imread(<span class="string">&#x27;input_image.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调整亮度和对比度</span></span><br><span class="line">alpha = <span class="number">1.5</span>  <span class="comment"># 调整亮度的参数</span></span><br><span class="line">beta = <span class="number">30</span>    <span class="comment"># 调整对比度的参数</span></span><br><span class="line">adjusted = cv2.convertScaleAbs(image, alpha=alpha, beta=beta)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示调整后的图像</span></span><br><span class="line">cv2.imshow(<span class="string">&#x27;Adjusted Image&#x27;</span>, adjusted)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;input_image&#x27;</span>, image)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>调整图像的伽马值是图像增强中的一种方法，它可以改变图像的亮度和对比度，特别是对于暗部和亮部的细节增强效果明显。</p>
+<h3 id="伽马校正原理："><a href="#伽马校正原理：" class="headerlink" title="伽马校正原理："></a>伽马校正原理：</h3><p>伽马校正是一种非线性调整图像亮度的方法，它基于伽马函数的概念。伽马函数将输入值映射到输出值，以改变图像的对比度和亮度。伽马值（γ值）是控制伽马函数曲线形状的参数。</p>
+<h3 id="调整图像的伽马值："><a href="#调整图像的伽马值：" class="headerlink" title="调整图像的伽马值："></a>调整图像的伽马值：</h3><ul>
+<li><strong>增加伽马值（γ &gt; 1）：</strong> 增大伽马值会使得暗部更加明亮，同时会压缩亮部细节，增强对比度。</li>
+<li><strong>减小伽马值（γ &lt; 1）：</strong> 减小伽马值会使得亮部更亮，同时拉伸暗部的细节，减少对比度。</li>
+</ul>
+<h3 id="实现方法：-1"><a href="#实现方法：-1" class="headerlink" title="实现方法："></a>实现方法：</h3><p>在图像处理软件或编程语言中，您可以使用下面的代码示例来调整图像的伽马值（以Python和OpenCV为例）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取图像</span></span><br><span class="line">image = cv2.imread(<span class="string">&#x27;input_image.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 伽马校正参数</span></span><br><span class="line">gamma = <span class="number">1.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 应用伽马校正</span></span><br><span class="line">gamma_corrected = np.power(image/<span class="built_in">float</span>(np.<span class="built_in">max</span>(image)), gamma) * <span class="number">255.0</span></span><br><span class="line">gamma_corrected = np.uint8(gamma_corrected)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示调整后的图像</span></span><br><span class="line">cv2.imshow(<span class="string">&#x27;input_image&#x27;</span>, image)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Gamma Corrected Image&#x27;</span>, gamma_corrected)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>直方图均衡化是一种图像增强技术，它通过重新分配图像像素的灰度级来增强图像的对比度。这个过程旨在拉伸图像的灰度级分布，使得图像中的暗部和亮部细节更加突出，从而提高整体视觉质量。</p>
+<h3 id="工作原理："><a href="#工作原理：" class="headerlink" title="工作原理："></a>工作原理：</h3><ol>
+<li><strong>灰度级分布分析：</strong> 首先，直方图均衡化会分析图像的灰度级分布，确定图像中每个灰度级的出现频率。</li>
+<li><strong>累积分布函数（CDF）：</strong> 接着，根据图像中各个灰度级的频率，计算出一个累积分布函数（CDF），代表了每个灰度级在整个图像中的累积分布情况。</li>
+<li><strong>映射函数生成：</strong> 根据CDF，生成一个映射函数，将原始图像中的每个灰度级映射到一个新的灰度级，从而重新分配像素值。</li>
+<li><strong>应用到图像：</strong> 将这个映射函数应用到整个图像上，重新映射每个像素的灰度级。</li>
+</ol>
+<h3 id="实现方法：-2"><a href="#实现方法：-2" class="headerlink" title="实现方法："></a>实现方法：</h3><p>在图像处理软件或编程语言中，您可以使用下面的代码示例来实现直方图均衡化（以Python和OpenCV为例）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取图像</span></span><br><span class="line">image = cv2.imread(<span class="string">&#x27;input_image.jpg&#x27;</span>, <span class="number">0</span>)  <span class="comment"># 以灰度模式读取图像</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 应用直方图均衡化</span></span><br><span class="line">equalized_image = cv2.equalizeHist(image)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示调整后的图像</span></span><br><span class="line">cv2.imshow(<span class="string">&#x27;input_image&#x27;</span>, image)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Equalized Image&#x27;</span>, equalized_image)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p>这段代码将以灰度模式读取名为<code>input_image.jpg</code>的图像，并使用<code>cv2.equalizeHist()</code>函数应用直方图均衡化。这个函数会自动计算图像的直方图并应用均衡化，从而增强图像的对比度。</p>
+<p>直方图均衡化是一种常用的图像增强技术，特别适用于改善图像中的暗部和亮部细节，使得图像更具有视觉吸引力和可分辨性。</p>
+<p>滤波器和模糊技术是图像处理中常用的方法，可以减少图像中的噪声或者增加图像的平滑度。它们有助于改善图像质量，去除噪声或突出图像的某些特征。</p>
+<h3 id="常见的滤波器和模糊技术："><a href="#常见的滤波器和模糊技术：" class="headerlink" title="常见的滤波器和模糊技术："></a>常见的滤波器和模糊技术：</h3><ol>
+<li><p><strong>均值滤波：</strong> 使用一个固定大小的滑动窗口，在窗口范围内取像素的平均值，以减少噪声。均值滤波器有助于去除轻微的噪声，但可能会损失图像的细节。</p>
+</li>
+<li><p><strong>高斯滤波：</strong> 根据高斯函数计算滤波器权重，使得离中心像素较远的像素对滤波结果的贡献较小。它能够更好地保留图像的细节，同时减少噪声。</p>
+</li>
+<li><p><strong>中值滤波：</strong> 将滤波窗口内的像素按照灰度值排序，并选择中间值作为中心像素的值。对于去除椒盐噪声等噪点效果较好。</p>
+</li>
+<li><p><strong>双边滤波：</strong> 考虑像素之间的空间距离和灰度值差异，以平滑图像同时保留边缘细节。适合保持图像的纹理细节。</p>
+</li>
+</ol>
+<h3 id="实现方法：-3"><a href="#实现方法：-3" class="headerlink" title="实现方法："></a>实现方法：</h3><p>在Python中，您可以使用OpenCV等库来应用这些滤波器和模糊技术。以下是一个简单的例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取图像</span></span><br><span class="line">image = cv2.imread(<span class="string">&#x27;input_image.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 应用不同的滤波器</span></span><br><span class="line">blur = cv2.blur(image, (<span class="number">3</span>, <span class="number">3</span>))  <span class="comment"># 均值滤波</span></span><br><span class="line">gaussian_blur = cv2.GaussianBlur(image, (<span class="number">3</span>, <span class="number">3</span>), <span class="number">0</span>)  <span class="comment"># 高斯滤波</span></span><br><span class="line">median_blur = cv2.medianBlur(image, <span class="number">3</span>)  <span class="comment"># 中值滤波</span></span><br><span class="line">bilateral_blur = cv2.bilateralFilter(image, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)  <span class="comment"># 双边滤波</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示不同滤波器处理后的图像</span></span><br><span class="line">cv2.imshow(<span class="string">&#x27;input_image&#x27;</span>, image)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Blur&#x27;</span>, blur)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Gaussian Blur&#x27;</span>, gaussian_blur)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Median Blur&#x27;</span>, median_blur)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Bilateral Blur&#x27;</span>, bilateral_blur)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p>锐化技术旨在增强图像的边缘和细节，使其看起来更清晰和更具有轮廓感。它有助于突出图像中的边缘、纹理和细节，使图像更加清晰和引人注目。</p>
+<h3 id="工作原理：-1"><a href="#工作原理：-1" class="headerlink" title="工作原理："></a>工作原理：</h3><p>锐化技术的核心思想是通过增强图像中像素值的变化来增加其对比度，从而使图像的边缘更加清晰。常见的锐化方法包括使用卷积核进行边缘检测或者增强图像中的高频细节。</p>
+<h3 id="锐化方法："><a href="#锐化方法：" class="headerlink" title="锐化方法："></a>锐化方法：</h3><ol>
+<li><p><strong>拉普拉斯滤波器：</strong> 拉普拉斯滤波器是一种常用的锐化滤波器，它可以突出图像中的边缘。它的卷积核是一个中心值为负数的3x3或5x5的矩阵。</p>
+</li>
+<li><p><strong>Sobel和Prewitt滤波器：</strong> 这些滤波器是用于边缘检测的常见工具，它们可以捕捉图像中水平和垂直方向的边缘。</p>
+</li>
+<li><p><strong>增强高频细节：</strong> 有时可以通过对图像进行高通滤波（如使用高斯拉普拉斯滤波器）来增强图像中的高频细节，以突出细节和边缘。</p>
+</li>
+</ol>
+<h3 id="实现方法：-4"><a href="#实现方法：-4" class="headerlink" title="实现方法："></a>实现方法：</h3><p>在图像处理软件或编程语言中，您可以使用不同的滤波器来实现图像的锐化。以下是一个Python和OpenCV的示例代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取图像</span></span><br><span class="line">image = cv2.imread(<span class="string">&#x27;input_image.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 锐化图像</span></span><br><span class="line">kernel = np.array([[-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>],</span><br><span class="line">                   [-<span class="number">1</span>, <span class="number">9</span>, -<span class="number">1</span>],</span><br><span class="line">                   [-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>]])  <span class="comment"># 自定义卷积核</span></span><br><span class="line">sharpened = cv2.filter2D(image, -<span class="number">1</span>, kernel)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示锐化后的图像</span></span><br><span class="line">cv2.imshow(<span class="string">&#x27;input_image&#x27;</span>, image)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Sharpened Image&#x27;</span>, sharpened)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在这个例子中，通过自定义一个卷积核<code>kernel</code>，使用<code>cv2.filter2D()</code>函数将该卷积核应用于图像，以实现锐化效果。这个卷积核在中心位置的权重值是9，周围的值为-1，这样的设置能够突出图像中的边缘和细节。</p>
+<p>锐化技术对于提高图像的清晰度和边缘细节非常有用，但要注意过度锐化可能导致图像出现噪声或者不自然的效果。因此，在应用锐化技术时需要谨慎调整参数，以获得最佳的视觉效果。</p>
+<p>颜色校正和增强是图像处理中常用的技术，旨在改善图像的色彩质量、色彩平衡和整体视觉效果。这些技术有助于调整图像的色调、饱和度和色彩分布，使图像更加真实、鲜明或适合特定的应用场景。</p>
+<h3 id="常见的颜色校正和增强方法："><a href="#常见的颜色校正和增强方法：" class="headerlink" title="常见的颜色校正和增强方法："></a>常见的颜色校正和增强方法：</h3><ol>
+<li><p><strong>白平衡：</strong> 白平衡校正是确保图像中白色看起来真实且中性的过程。它可以消除由于光源色温不同而导致的图像偏色问题，使白色在不同光照条件下看起来一致。</p>
+</li>
+<li><p><strong>色彩校正：</strong> 色彩校正用于调整整体图像的色调，可以通过调整色彩曲线、颜色映射或其他调色工具来改变图像的整体色彩，使其更加明亮、饱满或富有对比度。</p>
+</li>
+<li><p><strong>饱和度调整：</strong> 饱和度控制图像中颜色的鲜艳程度。增加饱和度可以使颜色更加鲜艳，而降低饱和度则减少颜色的强度。</p>
+</li>
+<li><p><strong>色彩增强和分离通道：</strong> 通过增强图像中特定颜色通道（如红色、绿色、蓝色）的强度，可以调整图像的整体色彩和对比度。</p>
+</li>
+<li><p><strong>颜色平衡：</strong> 调整图像中不同色彩之间的平衡，使得整个图像看起来更加自然和统一。</p>
+</li>
+</ol>
+<h3 id="实现方法：-5"><a href="#实现方法：-5" class="headerlink" title="实现方法："></a>实现方法：</h3><p>在图像处理软件或编程语言中，可以使用各种工具和技术来实现颜色校正和增强。以下是使用Python中OpenCV和NumPy库的一个示例代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取图像</span></span><br><span class="line">image = cv2.imread(<span class="string">&#x27;input_image.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 色彩增强 - 增加饱和度</span></span><br><span class="line">hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)</span><br><span class="line">hsv[:, :, <span class="number">1</span>] = hsv[:, :, <span class="number">1</span>] * <span class="number">1.5</span>  <span class="comment"># 增加饱和度</span></span><br><span class="line">enhanced_image = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示增强后的图像</span></span><br><span class="line">cv2.imshow(<span class="string">&#x27;input_image&#x27;</span>, image)</span><br><span class="line">cv2.imshow(<span class="string">&#x27;Enhanced Image&#x27;</span>, enhanced_image)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在这个例子中，使用了OpenCV将图像转换为HSV色彩空间，并对饱和度通道进行了增强（乘以1.5），然后将图像转回BGR色彩空间。这样的操作增加了图像中颜色的饱和度，使图像看起来更加鲜艳。</p>
+<p>颜色校正和增强技术对于图像处理中的各种应用都非常重要，可以改善图像的视觉效果并使其更适合特定的用途。根据具体的需求和应用场景，可以调整不同的参数和方法来实现理想的图像效果。</p>
+<p>深度学习和神经网络技术在图像增强领域发挥着重要作用，特别是在超分辨率重建和图像去噪方面。这些方法利用神经网络模型学习复杂的图像特征和模式，以提高图像质量。</p>
+<h3 id="超分辨率重建："><a href="#超分辨率重建：" class="headerlink" title="超分辨率重建："></a>超分辨率重建：</h3><p>超分辨率重建的目标是从低分辨率图像重建出高分辨率图像，使得图像更加清晰、更富有细节。卷积神经网络（CNN）通常用于学习低分辨率图像与其高分辨率对应图像之间的映射关系。</p>
+<ul>
+<li><p><strong>SRCNN（Super-Resolution Convolutional Neural Network）：</strong> 是一种常用的用于超分辨率重建的CNN模型。它通过多个卷积层和特征映射层来提取和重建高分辨率图像。</p>
+</li>
+<li><p><strong>ESPCN（Efficient Sub-Pixel Convolutional Neural Network）：</strong> 另一个用于超分辨率的CNN模型，它利用转置卷积（deconvolution）层来提高图像的空间分辨率。</p>
+</li>
+</ul>
+<h3 id="图像去噪："><a href="#图像去噪：" class="headerlink" title="图像去噪："></a>图像去噪：</h3><p>图像去噪的目标是消除图像中的噪声，以获得更清晰和更真实的图像。神经网络可以学习图像中的噪声模式，并尝试重建原始的干净图像。</p>
+<ul>
+<li><strong>DnCNN（Deep Convolutional Neural Network for Image Denoising）：</strong> 是一种针对图像去噪的深度卷积神经网络。它通过训练学习图像中的噪声分布，并尝试恢复原始图像。</li>
+</ul>
+<h3 id="实现方法：-6"><a href="#实现方法：-6" class="headerlink" title="实现方法："></a>实现方法：</h3><p>您可以使用深度学习框架（如TensorFlow、PyTorch或Keras）来构建和训练这些模型。以下是一个使用Keras和TensorFlow的简单示例，展示了如何训练一个简单的超分辨率重建模型：</p>
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/metal/tensorflow-plugin/">https://developer.apple.com/metal/tensorflow-plugin/</a></p>
+<p>这段代码是一个使用 TensorFlow 的示例，用于训练一个 ResNet50 模型来对 CIFAR-100 数据集进行图像分类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">cifar = tf.keras.datasets.cifar100</span><br><span class="line">(x_train, y_train), (x_test, y_test) = cifar.load_data()</span><br><span class="line">model = tf.keras.applications.ResNet50(</span><br><span class="line">    include_top=<span class="literal">True</span>,</span><br><span class="line">    weights=<span class="literal">None</span>,</span><br><span class="line">    input_shape=(<span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>),</span><br><span class="line">    classes=<span class="number">100</span>,</span><br><span class="line">)</span><br><span class="line">loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=<span class="literal">False</span>)</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&quot;adam&quot;</span>, loss=loss_fn, metrics=[<span class="string">&quot;accuracy&quot;</span>])</span><br><span class="line">model.fit(x_train, y_train, epochs=<span class="number">5</span>, batch_size=<span class="number">64</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>该段代码执行了以下步骤：</p>
+<ul>
+<li>加载数据集</li>
+<li>创建了一个 ResNet50 模型</li>
+<li>编译了模型，指定了优化器和损失函数</li>
+<li>进行了 5 个周期（epochs）的训练，每个周期中使用了批量大小为 64 的训练数据进行模型优化。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz">https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz</a><br>这个链接指向一个数据集的压缩文件，是 CIFAR-100 数据集的一个版本。CIFAR-100 是一个广泛用于图像识别任务的数据集，其中包含 100 个类别的图像，每个类别包含 600 张尺寸为 32x32 像素的彩色图像。这些图像通常被用来测试和验证图像分类算法的性能。</p>
+<p>这个压缩文件（<code>.tar.gz</code> 格式）包含了 CIFAR-100 数据集的图像和相关的标签信息。通常，研究人员和开发者会下载这样的数据集来训练机器学习模型，尤其是在图像分类或计算机视觉任务上。<br>![[06_其他笔记&#x2F;Pasted image 20231206114746.png]]</p>
+<p>![[Pasted image 20231206124009 1.png]]损失函数（Loss Function）是用来衡量机器学习模型预测值与实际值之间差异的函数。它是在训练过程中优化模型参数的关键部分。损失函数越小，表示模型的预测结果与真实标签之间的差异越小，模型的性能越好。</p>
+<p>在机器学习中，损失函数的选择通常依赖于所解决的问题类型，比如回归、分类或者其他特定的任务。下面是一些常见的损失函数：</p>
+<ol>
+<li><p><strong>均方误差（Mean Squared Error，MSE）：</strong> 用于回归问题，计算预测值与真实值之间的平方差的平均值。</p>
+</li>
+<li><p><strong>交叉熵损失（Cross-Entropy Loss）：</strong> 用于分类问题，比如二分类或多分类问题。对于二分类问题，常用的是二元交叉熵损失（Binary Cross-Entropy Loss），而对于多分类问题，常用的是分类交叉熵损失（Categorical Cross-Entropy Loss）或稀疏分类交叉熵损失（Sparse Categorical Cross-Entropy Loss）。</p>
+</li>
+<li><p><strong>对数损失（Log Loss）：</strong> 通常用于逻辑回归模型，衡量模型对每个样本的分类预测与实际标签之间的差异。</p>
+</li>
+<li><p><strong>哈斯达（Hinge）损失：</strong> 主要用于支持向量机（SVM）等模型，在分类问题中用于最大化边界间隔。</p>
+</li>
+<li><p><strong>自定义损失函数：</strong> 有时候，根据特定问题的要求，可以自定义损失函数来更好地匹配问题的特性和需求。</p>
+</li>
+</ol>
+<p>损失函数的选择在很大程度上取决于问题类型和模型的性质。选择合适的损失函数可以帮助模型更有效地学习并提高性能。</p>
+<p>在机器学习中，准确率（Accuracy）是一种常用的性能评估指标，用于衡量分类模型在整个数据集上预测正确的样本比例。准确率通常被用来评估分类模型的性能，特别是在类别分布相对均衡的情况下。</p>
+<p>准确率的计算公式如下：</p>
+<p>Accuracy&#x3D;Number of Correct PredictionsTotal Number of PredictionsAccuracy&#x3D;Total Number of PredictionsNumber of Correct Predictions​</p>
+<p>具体来说，准确率是正确预测的样本数除以总样本数。在分类问题中，当模型预测的类别与真实类别完全一致时，称为一次正确预测。</p>
+<p>例如，假设有 100 个样本进行了分类预测，模型正确预测了其中的 85 个样本，那么准确率为 85100&#x3D;0.8510085​&#x3D;0.85 或者 85%。这表示模型在这个数据集上的预测准确率为 85%。</p>
+<p>结果：<br>![[06_其他笔记&#x2F;Pasted image 20231206161233.png]]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">782/782 [==============================] - 814s 1s/step - loss: 4.5467 - accuracy: 0.0912</span><br><span class="line">Epoch 2/15</span><br><span class="line">782/782 [==============================] - 807s 1s/step - loss: 4.3723 - accuracy: 0.0993</span><br><span class="line">Epoch 3/15</span><br><span class="line">782/782 [==============================] - 814s 1s/step - loss: 4.0574 - accuracy: 0.1292</span><br><span class="line">Epoch 4/15</span><br><span class="line">782/782 [==============================] - 793s 1s/step - loss: 3.8654 - accuracy: 0.1540</span><br><span class="line">Epoch 5/15</span><br><span class="line">782/782 [==============================] - 793s 1s/step - loss: 3.5250 - accuracy: 0.1942</span><br><span class="line">Epoch 6/15</span><br><span class="line">782/782 [==============================] - 794s 1s/step - loss: 3.5767 - accuracy: 0.1876</span><br><span class="line">Epoch 7/15</span><br><span class="line">782/782 [==============================] - 794s 1s/step - loss: 3.3357 - accuracy: 0.2235</span><br><span class="line">Epoch 8/15</span><br><span class="line">782/782 [==============================] - 807s 1s/step - loss: 3.1733 - accuracy: 0.2512</span><br><span class="line">Epoch 9/15</span><br><span class="line">782/782 [==============================] - 798s 1s/step - loss: 3.1854 - accuracy: 0.2412</span><br><span class="line">Epoch 10/15</span><br><span class="line">782/782 [==============================] - 797s 1s/step - loss: 3.0295 - accuracy: 0.2671</span><br><span class="line">Epoch 11/15</span><br><span class="line">782/782 [==============================] - 796s 1s/step - loss: 3.0678 - accuracy: 0.2572</span><br><span class="line">Epoch 12/15</span><br><span class="line">782/782 [==============================] - 794s 1s/step - loss: 2.7320 - accuracy: 0.3145</span><br><span class="line">Epoch 13/15</span><br><span class="line">782/782 [==============================] - 807s 1s/step - loss: 2.5572 - accuracy: 0.3513</span><br><span class="line">Epoch 14/15</span><br><span class="line">782/782 [==============================] - 821s 1s/step - loss: 2.4075 - accuracy: 0.3762</span><br><span class="line">Epoch 15/15</span><br><span class="line">782/782 [==============================] - 812s 1s/step - loss: 2.2718 - accuracy: 0.4030</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag"># 图像处理</a>
+              <a href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag"># 工作</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/11/03/C#%E5%85%B3%E9%94%AE%E5%AD%97/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/01/02/hexo%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/" rel="next" title="hexo安装记录">
+      hexo安装记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%8B%E7%BB%8D%E4%B8%8E%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">1. 介绍与概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA%E6%8A%80%E6%9C%AF"><span class="nav-number">2.</span> <span class="nav-text">2. 常见的图像增强技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%AB%98%E7%BA%A7%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA%E6%8A%80%E6%9C%AF"><span class="nav-number">3.</span> <span class="nav-text">3. 高级图像增强技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%A1%88%E4%BE%8B%E5%92%8C%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">4. 案例和示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%BB%93%E8%AF%AD%E5%92%8C%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">5. 结语和总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BA%AE%E5%BA%A6%E8%B0%83%E6%95%B4%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">1. 亮度调整：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AF%B9%E6%AF%94%E5%BA%A6%E8%B0%83%E6%95%B4%EF%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">2. 对比度调整：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">8.</span> <span class="nav-text">实现方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%BD%E9%A9%AC%E6%A0%A1%E6%AD%A3%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">9.</span> <span class="nav-text">伽马校正原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E5%9B%BE%E5%83%8F%E7%9A%84%E4%BC%BD%E9%A9%AC%E5%80%BC%EF%BC%9A"><span class="nav-number">10.</span> <span class="nav-text">调整图像的伽马值：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%9A-1"><span class="nav-number">11.</span> <span class="nav-text">实现方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">12.</span> <span class="nav-text">工作原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%9A-2"><span class="nav-number">13.</span> <span class="nav-text">实现方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8C%E6%A8%A1%E7%B3%8A%E6%8A%80%E6%9C%AF%EF%BC%9A"><span class="nav-number">14.</span> <span class="nav-text">常见的滤波器和模糊技术：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%9A-3"><span class="nav-number">15.</span> <span class="nav-text">实现方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9A-1"><span class="nav-number">16.</span> <span class="nav-text">工作原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%90%E5%8C%96%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">17.</span> <span class="nav-text">锐化方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%9A-4"><span class="nav-number">18.</span> <span class="nav-text">实现方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E9%A2%9C%E8%89%B2%E6%A0%A1%E6%AD%A3%E5%92%8C%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">19.</span> <span class="nav-text">常见的颜色校正和增强方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%9A-5"><span class="nav-number">20.</span> <span class="nav-text">实现方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E9%87%8D%E5%BB%BA%EF%BC%9A"><span class="nav-number">21.</span> <span class="nav-text">超分辨率重建：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E5%8E%BB%E5%99%AA%EF%BC%9A"><span class="nav-number">22.</span> <span class="nav-text">图像去噪：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%9A-6"><span class="nav-number">23.</span> <span class="nav-text">实现方法：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wrkkin</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wrkkin</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
